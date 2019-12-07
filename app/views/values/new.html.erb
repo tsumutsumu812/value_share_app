@@ -1,0 +1,13 @@
+<h1>あなたの価値観を共有してください</h1>
+
+<%= form_with model: @value do |f| %>
+    <div class = "form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class: 'form-controll' %>
+    </div>
+    <div class = "form-group" >
+        <%= f.label :content, '価値観' %>
+        <%= f.text_area :content, class: 'form-controll', rows: 10 %>
+    </div>
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>
