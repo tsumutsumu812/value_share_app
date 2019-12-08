@@ -21,7 +21,10 @@ class ValuesController < ApplicationController
       flash[:notice] = "あなたの価値観を受付けました"
       redirect_to value
     else
-      render :new
+      redirect_to new_value_path, flash: {
+        value: value,
+        error_messages: value.errors.full_messages
+      }
     end
   end
 
