@@ -1,8 +1,13 @@
 <h1>みんなの価値観一覧</h1>
-
-<table>
+<% if flash[:notice] %>
+    <div class="alert alert-danger">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>タイトル</th>
             <th>あなたの価値観</th>
         </tr>
@@ -10,10 +15,13 @@
     <tbody>
         <% @values.each do |value| %>
             <tr>
-                <th><%= value.title %></th>
-                <th><%= value.content %></th>
+                <th><%= value.id %></th>
+                <th><%= link_to value.title, value %></th>
+                <th><%= simple_format(value.content) %></th>
             </tr>
         <% end %>
     </tbody>
     
 </table>
+
+<%= paginate @values %>

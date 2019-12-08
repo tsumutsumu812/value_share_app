@@ -1,5 +1,11 @@
+
+<% if flash[:notice] %>
+    <div class="alert alert-primary">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
 <h1><%= @value.title %></h1>
-<p><%= @value.content %></p>
+<p><%= simple_format(@value.content) %></p>
 
 <%= link_to "編集", edit_value_path(@value) %>
 <%= link_to "削除", @value, method: :delete, data: {confirm: "本当に削除しますか?"} %>

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env == 'development'
-    10.times do |i|
+    50.times do |i|
         Value.create!(title: "タイトル#{i}", content: "私の価値観#{i}")
     end
 end

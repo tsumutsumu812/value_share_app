@@ -1,18 +1,18 @@
 class ValuesController < ApplicationController
+  before_action :set_target_value, only: %i[show edit update destroy]
+
   def new
     @value = Value.new
   end
 
   def index
-    @values = Value.all
+    @values = Value.page(params[:page])
   end
 
   def edit
-    @value = Value.find_by(id: params[:id])
   end
 
   def show
-    @value = Value.find(params[:id])
   end
 
   def create
@@ -33,8 +33,7 @@ class ValuesController < ApplicationController
   end
 
   def destroy
-    value = Value.find(params[:id])
-    value.destroy
+    @value.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to values_path
   end
@@ -42,6 +41,10 @@ class ValuesController < ApplicationController
   private 
     def value_params
       params.require(:value).permit(:title, :content)
+    end
+
+    def set_target_value
+      @value = Value.find(params[:id])
     end
 
 end

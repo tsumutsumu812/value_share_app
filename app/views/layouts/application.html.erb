@@ -10,6 +10,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar  navbar-fixed-top navbar-inverse navbar-dark bg-dark">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-navs">
+            <li><%= link_to "一覧",   values_path %></li>
+            <li><%= link_to "新規投稿", new_value_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
