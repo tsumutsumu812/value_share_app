@@ -9,3 +9,18 @@
 
 <%= link_to "編集", edit_value_path(@value) %>
 <%= link_to "削除", @value, method: :delete, data: {confirm: "本当に削除しますか?"} %>
+<% if flash[:error_messages] %>
+  <div class="alert alert-danger">
+    <ul>
+      <%= flash[:error_messages].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="p-comment__list">
+    <div class="p-comment_title_listTitle">コメント</div>
+    <%= render @value.comments %>
+</div>
+
+<%= render partial: 'comments/form', locals: { comment: @comment } %>

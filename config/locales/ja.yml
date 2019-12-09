@@ -4,6 +4,9 @@ ja:
       value:
         title: タイトル
         content: 価値観
+      comment:
+        name: 名前
+        comment: コメント
   views:
     pagination:
       first: 最初

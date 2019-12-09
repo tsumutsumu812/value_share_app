@@ -2,7 +2,7 @@ class ValuesController < ApplicationController
   before_action :set_target_value, only: %i[show edit update destroy]
 
   def new
-    @value = Value.new
+    @value = Value.new(flash[:value])
   end
 
   def index
@@ -10,9 +10,11 @@ class ValuesController < ApplicationController
   end
 
   def edit
+    @value.attributes = flash[:value] if flash[:value]
   end
 
   def show
+    @comment = Comment.new(value_id: @value.id)
   end
 
   def create
@@ -29,10 +31,15 @@ class ValuesController < ApplicationController
   end
 
   def update
-    value = Value.find(params[:id])
-    value.update(value_params)
-    flash[:notice] = "編集が完了しました"
-    redirect_to value
+    if @value.update(value_params)
+      flash[:notice] = "編集が完了しました"
+      redirect_to @value
+    else
+      redirect_to edit_value_path(@value), flash: {
+        value: @value,
+        error_messages: @value.errors.full_messages
+      }
+    end
   end
 
   def destroy
