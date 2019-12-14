@@ -15,7 +15,7 @@
         <nav>
           <ul class="nav navbar-navs">
             <% if @current_user %>
-              <li><%= link_to "マイページ" %></li>
+              <li><%= link_to "マイページ", @current_user %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
               <li><%= link_to "ユーザー一覧", users_path %></li>
               <li><%= link_to "新規投稿", new_value_path %></li>
