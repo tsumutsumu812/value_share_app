@@ -14,8 +14,16 @@
       <div class="container">
         <nav>
           <ul class="nav navbar-navs">
-            <li><%= link_to "一覧",   values_path %></li>
-            <li><%= link_to "新規投稿", new_value_path %></li>
+            <% if @current_user %>
+              <li><%= link_to "マイページ" %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
+              <li><%= link_to "新規投稿", new_value_path %></li>
+            <% else %>
+              <li><%= link_to "ログイン",  login_path %></li>
+              <li><%= link_to "新規登録", new_user_path %></li>
+            <% end %>
+            <li><%= link_to "投稿一覧",   values_path %></li>
           </ul>
         </nav>
       </div>

@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>ユーザー詳細ページ</h1>
+<% if flash[:notice] %>
+  <div class="alert alert-primary">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<p><%= @user.name %></p>
+<p><%= @user.email %></p>
+
+<% if @current_user.id == @user.id %>
+  <%= link_to "編集", edit_user_path(@user) %>
+  <%= link_to "削除", @value, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+<% end %>
