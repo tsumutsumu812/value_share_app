@@ -18,7 +18,7 @@ class ValuesController < ApplicationController
   end
 
   def create
-    value = Value.new(value_params)
+    value = current_user.values.build(value_params)
     if value.save
       flash[:notice] = "あなたの価値観を受付けました"
       redirect_to value

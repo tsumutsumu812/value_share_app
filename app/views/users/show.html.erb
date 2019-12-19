@@ -11,3 +11,13 @@
   <%= link_to "編集", edit_user_path(@current_user), class: "btn btn-primary" %>
   <%= link_to "退会", @value, method: :delete, data: { confirm: "本当に退会しますか?" }, class: "btn btn-primary" %>
 <% end %>
+
+
+ <div class="col-md-8">
+    <% if @user.values.any? %>
+      <h3>価値観一覧 (<%= @user.values.count %>)</h3>
+      <ol class="microposts">
+        <%= render @user.values %>
+      </ol>
+    <% end %>
+  </div>

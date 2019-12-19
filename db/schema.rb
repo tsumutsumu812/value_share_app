@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_163234) do
+ActiveRecord::Schema.define(version: 2019_12_14_075737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 2019_12_09_163234) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_values_on_user_id"
   end
 
   add_foreign_key "comments", "\"values\"", column: "value_id"
+  add_foreign_key "values", "users"
 end

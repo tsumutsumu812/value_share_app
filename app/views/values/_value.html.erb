@@ -1,0 +1,8 @@
+<div class="p-comment__item">
+  <div class="p-comment__bottomLine">
+    <span class="user"><%= link_to value.user.name, value.user %></span>
+    <span><%= value.title %></span>
+    <span><%= value.created_at.to_s(:datetime_jp) %></span>
+    <span><%= link_to '削除', value, method: :delete, data: { confirm: '削除してもよろしいですか?' } %></span>
+  </div>
+</div>

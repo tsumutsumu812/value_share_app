@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @values = @user.values
+    @value = Value.new(user_id: @user.id)
   end
 
   def index
